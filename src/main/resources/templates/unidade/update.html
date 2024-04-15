@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Unidade</title>
+</head>
+
+<body>
+    <div class="container pt-4 d-flex justify-content-center">
+        <div class="col-8">
+
+            <form th:action="@{/unidades/update}" th:object="${unidade}" class="pt-4" method="post" enctype="multipart/form-data">
+                <input type="hidden"  th:field="*{id}" th:value="${unidade.id}">
+                <div class="card">
+                    <div class="card-header">
+                        <caption>Edição de unidade</caption>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-3">
+                                <label for="codigo">Código</label>
+                                <input 
+                                th:field="*{codigo}"
+                                th:value="${unidade.codigo}"
+                                class="form-control form-control-sm" type="text">
+                                <span class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}" ></span>
+                            </div>
+                            <div class="col-9">
+                                <label for="descricao">Descriição</label>
+                                <input 
+                                    th:field="*{descricao}"
+                                    th:value="${unidade.descricao}"
+                                    class="form-control form-control-sm" type="text">
+                                <span class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" ></span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-primary" type="submit">Salvar</button>
+                        <a class="btn btn-sm btn-secondary" href="/unidades">Voltar</a>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</body>
+</html>
