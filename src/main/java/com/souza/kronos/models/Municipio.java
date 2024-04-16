@@ -41,4 +41,10 @@ public class Municipio {
     @NotNull
     private Integer codigo;
 
+    public String toString() 
+    { 
+        return this.descricao;
+    } 
+
+
 }

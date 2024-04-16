@@ -7,93 +7,91 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.ui.Model;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.validation.BindingResult;
+import com.souza.kronos.models.Estado;
+import com.souza.kronos.models.Municipio;
+import com.souza.kronos.services.EstadoService;
+import com.souza.kronos.services.MunicipioService;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.souza.kronos.models.Estado;
-import com.souza.kronos.models.Pais;
-import com.souza.kronos.services.EstadoService;
-import com.souza.kronos.services.PaisService;
-
 @Controller
-@RequestMapping("/estados")
-public class EstadoController {
+@RequestMapping("/municipios")
+public class MunicipioController {
     
     @Autowired
-    EstadoService service;
+    MunicipioService service;
 
     @Autowired
-    PaisService servicePais;
+    EstadoService serviceEstado;
 
     @GetMapping
     public String index(Model model)
     {
-        List<Estado> list = service.listAll();
+        List<Municipio> list = service.listAll();
         model.addAttribute("list", list);
-        return "/estado/index";
+        return "/municipio/index";
 
     }
 
     @GetMapping("/create")
     public String create(Model model)
     {
-        Estado obj = new Estado();
-        List<Pais> listPais = servicePais.listAll();
-        model.addAttribute("listPais", listPais);
+        Municipio obj = new Municipio();
+        List<Estado> listEstados = serviceEstado.listAll();
+        model.addAttribute("listEstados", listEstados);
         model.addAttribute("obj", obj);
-        return "/estado/create";
+        return "/municipio/create";
     }
 
     @PostMapping("/create")
-    public String store(@Valid @ModelAttribute("obj") Estado obj, BindingResult bindingResult)
+    public String store(@Valid @ModelAttribute("obj") Municipio obj, BindingResult bindingResult)
     {
         if (bindingResult.hasErrors()) {
-            return "/estado/create";
+            return "/municipio/create";
         } else {
             service.create(obj);
-            return "redirect:/estados";
+            return "redirect:/municipios";
         }
     }
 
     @GetMapping("/destroy/{id}")
     public String showFormDestroy(@PathVariable Long id, Model model)
     {
-        Estado obj = service.findById(id) ;
+        Municipio obj = service.findById(id) ;
         model.addAttribute("obj", obj);
-        return "/estado/destroy";
+        return "/municipio/destroy";
     }
 
-    @PostMapping("/destroy/estado")
+    @PostMapping("/destroy/municipio")
     public String destroy(@RequestParam("id") Long id)
     {
         service.destroy(id);
-
         return "redirect:/estados";
     }
 
     @GetMapping("/update/{id}")
     public String edit(@PathVariable Long id, Model model)
     {
-        List<Pais> listPais = servicePais.listAll();
-        Estado obj = service.findById(id) ;
+        List<Estado> listEstados = serviceEstado.listAll();
+        Municipio obj = service.findById(id) ;
         model.addAttribute("obj", obj);
-        model.addAttribute("listPais", listPais);
-        return "/estado/update";
+        model.addAttribute("listEstados", listEstados);
+        return "/municipio/update";
     }
 
     @PostMapping("/update")
-    public String update( @Valid Estado obj, BindingResult bindingResult)
+    public String update( @Valid Municipio obj, BindingResult bindingResult)
     {
         if (bindingResult.hasErrors()) {
-            return "estado/update";
+            return "municipio/update";
         }
 
         service.update(obj);
 
-        return "redirect:/estados";
+        return "redirect:/municipios";
     }
 }

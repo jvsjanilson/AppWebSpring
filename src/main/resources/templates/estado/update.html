@@ -22,7 +22,7 @@
                             <div class="col-2">
                                 <label for="codigo">Código</label>
                                 <input 
-                                th:field="*{codigo}"
+                                th:field="*{codigo}" autofocus
                                 th:value="${obj.codigo}"
                                 class="form-control" type="text">
                                 <span class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}" ></span>

@@ -21,7 +21,7 @@
                             <div class="col-3">
                                 <label for="codigo">Código</label>
                                 <input 
-                                th:field="*{codigo}"
+                                th:field="*{codigo}" autofocus
                                 class="form-control " type="text">
                                 <span class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}" ></span>
                             </div>
@@ -37,8 +37,8 @@
                     </div>
                     
                     <div class="card-footer">
-                        <button class="btn btn-sm btn-primary" type="submit">Salvar</button>
-                        <a class="btn btn-sm btn-secondary" href="/unidades">Voltar</a>
+                        <button class="btn  btn-primary" type="submit">Salvar</button>
+                        <a class="btn  btn-secondary" href="/unidades">Voltar</a>
                     </div>
                 </div>
                 

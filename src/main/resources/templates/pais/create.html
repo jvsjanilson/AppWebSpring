@@ -20,7 +20,7 @@
                         <div class="row g-3">
                             <div class="col-3">
                                 <label for="cod_ibge">Cód. IBGE</label>
-                                <input 
+                                <input  autofocus
                                 th:field="*{codigo}"
                                 class="form-control " type="text">
                                 <span class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}" ></span>

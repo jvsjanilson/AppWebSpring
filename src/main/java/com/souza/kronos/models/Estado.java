@@ -43,4 +43,10 @@ public class Estado {
     @Column(unique = true)
     @NotNull
     private Integer codigo;
+
+
+    public String toString() 
+    { 
+        return this.uf;
+    } 
 }
