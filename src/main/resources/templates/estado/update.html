@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div class="container pt-4 d-flex justify-content-center">
+    <div class="container-fluid pt-4 d-flex justify-content-center">
         <div class="col-12">
 
             <form th:action="@{/estados/update}" th:object="${obj}" class="pt-4" method="post" enctype="multipart/form-data">
@@ -24,20 +24,20 @@
                                 <input 
                                 th:field="*{codigo}"
                                 th:value="${obj.codigo}"
-                                class="form-control form-control-sm" type="text">
+                                class="form-control" type="text">
                                 <span class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}" ></span>
                             </div>
                             <div class="col-1">
                                 <label for="uf">UF</label>
                                 <input 
                                 th:field="*{uf}"
-                                class="form-control form-control-sm" type="text">
+                                class="form-control" type="text">
                                 <span class="text-danger" th:if="${#fields.hasErrors('uf')}" th:errors="*{uf}" ></span>
                             </div>
                             <div class="col-3">
                                 <label for="pais">Pais</label>
                                 <select 
-                                    class="form-select form-select-sm"
+                                    class="form-select"
                                     th:field="*{pais}" >
                                     <option th:each="p : ${listPais}" th:value="${p.id}" th:text="${p.descricao}" ></option>
                                 </select>
@@ -48,7 +48,7 @@
                                 <input 
                                     th:field="*{descricao}"
                                     th:value="${obj.descricao}"
-                                    class="form-control form-control-sm" type="text">
+                                    class="form-control" type="text">
                                 <span class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" ></span>
                             </div>
                         </div>

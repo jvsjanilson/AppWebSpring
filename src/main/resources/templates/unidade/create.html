@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div class="container pt-4 d-flex justify-content-center">
+    <div class="container-fluid pt-4 d-flex justify-content-center">
         <div class="col-8">
 
             <form th:action="@{/unidades/create}" th:object="${unidade}" class="pt-4" method="post" enctype="multipart/form-data">
@@ -22,14 +22,14 @@
                                 <label for="codigo">Código</label>
                                 <input 
                                 th:field="*{codigo}"
-                                class="form-control form-control-sm" type="text">
+                                class="form-control " type="text">
                                 <span class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}" ></span>
                             </div>
                             <div class="col-9">
                                 <label for="descricao">Descriição</label>
                                 <input 
                                 th:field="*{descricao}"
-                                class="form-control form-control-sm" type="text">
+                                class="form-control " type="text">
                                 <span class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" ></span>
                             </div>
                         </div>
