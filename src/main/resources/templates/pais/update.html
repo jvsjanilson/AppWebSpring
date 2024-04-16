@@ -9,7 +9,7 @@
 
 <body>
     <div class="container pt-4 d-flex justify-content-center">
-        <div class="col-8">
+        <div class="col-12">
 
             <form th:action="@{/pais/update}" th:object="${obj}" class="pt-4" method="post" enctype="multipart/form-data">
                 <input type="hidden"  th:field="*{id}" th:value="${obj.id}">
@@ -28,7 +28,7 @@
                                 <span class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}" ></span>
                             </div>
                             <div class="col-9">
-                                <label for="descricao">Descriição</label>
+                                <label for="descricao">Descrição</label>
                                 <input 
                                     th:field="*{descricao}"
                                     th:value="${obj.descricao}"
@@ -40,8 +40,8 @@
                     </div>
                     
                     <div class="card-footer">
-                        <button class="btn btn-sm btn-primary" type="submit">Salvar</button>
-                        <a class="btn btn-sm btn-secondary" href="/pais">Voltar</a>
+                        <button class="btn btn-primary" type="submit">Salvar</button>
+                        <a class="btn btn-secondary" href="/pais">Voltar</a>
                     </div>
                 </div>
                 
