@@ -9,12 +9,15 @@
 <body>
     <div class="container pt-4">
         <a href="/estados/create" class="btn btn-sm btn-primary">Novo Estado</a>
+        <a href="/" class="btn btn-sm btn-primary">Home</a>
+
         <hr>
         <table class="table table-sm table-bordered">
             <thead>
                 <tr>
                     <th>Id</th>
                     <th>Cód. IBGE</th>
+                    <th>UF</th>
                     <th>Descrição</th>
                     <th>País</th>
                     <th class="text-center">Ações</th>
@@ -24,6 +27,7 @@
                 <tr th:each="m, iterStat : ${list}" >
                     <td th:text="${m.id}"></td>
                     <td th:text="${m.codigo}"></td>
+                    <td th:text="${m.uf}"></td>
                     <td th:text="${m.descricao}"></td>
                     <td th:text="${m.pais}"></td>
                     <td class="text-center" style="width: 15%;">
