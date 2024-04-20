@@ -48,6 +48,6 @@ public class ContatoService {
 
     public void destroy(Long id)
     {
-     repository.deleteById(id);
+        repository.deleteById(id);
     }       
 }

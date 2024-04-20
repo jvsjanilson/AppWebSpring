@@ -96,10 +96,11 @@
                                 <label for="estado">Estado</label>
 
                                 <select 
+                                    onchange="loadMuniciios(this.value)"
                                     class="form-select"
                                     th:field="*{estado}" >
                                     <option th:each="p : ${listEstados}" th:value="${p.id}" th:text="${p.id + ' - ' +  p.descricao}" selected></option>
-                                    <option value="100" th:selected="true">...</option>
+
                                 </select>
                                 <span class="text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}" ></span>
                             </div>
@@ -114,8 +115,7 @@
                                 <span class="text-danger" th:if="${#fields.hasErrors('municipio')}" th:errors="*{municipio}" ></span>
                             </div>
                         </div>
-
-                       
+                      
                         
                     </div>
                     
@@ -128,5 +128,27 @@
             </form>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        function loadMuniciios(estado_id) {
+            
+            $.ajax({
+                method: "get",
+                url: `http://localhost:3030/api/municipios/${estado_id}`,
+                success: (res) => {
+                    $("#municipio option").remove()
+                    if (res) {
+                        if (res.length > 0) {
+                            res.forEach((i) => {
+                                $("#municipio").append(`
+                                    <option value="${i.id}">${i.descricao}</option>
+                                `);
+                            });
+                        }
+                    }
+                }
+            })
+        }
+    </script>
 </body>
 </html>

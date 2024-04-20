@@ -116,7 +116,7 @@ public class ContatoController {
             return "contato/update";
         }
         
-        System.out.println("teste");
+        
         service.update(obj);
 
         return "redirect:/contatos";
