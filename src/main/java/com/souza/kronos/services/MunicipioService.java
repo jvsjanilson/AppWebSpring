@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.souza.kronos.models.Estado;
 import com.souza.kronos.models.Municipio;
 import com.souza.kronos.repositories.MunicipioRepository;
 
@@ -37,7 +38,17 @@ public class MunicipioService {
 
     public void destroy(Long id)
     {
-     repository.deleteById(id);
+        repository.deleteById(id);
     }       
+
+    public List<Municipio> findByEstado(Estado estado) 
+    {
+        return repository.findByEstado(estado);
+    }
+
+    public List<Municipio> findByEstadoId(Long id)
+    {
+        return repository.findByEstadoId(id);
+    }
 
 }
