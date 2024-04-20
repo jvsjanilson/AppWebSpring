@@ -30,7 +30,7 @@ public class Contato {
    
     @Column
     @NotBlank
-    @Max(60)
+    @Size(max = 60)
     
     private String nome;
 
@@ -44,6 +44,7 @@ public class Contato {
     private String endereco;
 
     @Size(max = 10)
+    //@Max(10)
     private String numero;
 
     @Size(max = 8)

@@ -56,6 +56,7 @@
                             <div class="col-2">
                                 <label for="numero">Número</label>
                                 <input 
+                                th:maxlength="10"
                                 th:field="*{numero}"
                                 class="form-control " type="text">
                                 <span class="text-danger" th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}" ></span>
@@ -64,6 +65,7 @@
                             <div class="col-2">
                                 <label for="cep">CEP</label>
                                 <input 
+                                
                                 th:field="*{cep}"
                                 class="form-control " type="text">
                                 <span class="text-danger" th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}" ></span>
