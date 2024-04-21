@@ -23,7 +23,7 @@
                             <span class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}" ></span>
                         </div>
                         <div class="col-9">
-                            <label for="descricao">Descriição</label>
+                            <label for="descricao">Descrição</label>
                             <input 
                                 th:field="*{descricao}"
                                 th:value="${unidade.descricao}"

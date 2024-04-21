@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments :: head('Unidade')}" ></head>
+<body>
+  <div align="center" class="container-fluid"><nav th:replace="~{fragments :: navbar}"></nav></div>
+  <div class="container-fluid pt-2">
+    <a th:href="@{/categorias/create}" class="btn  btn-primary">Nova Categoria</a>
+
+    <hr>
+    <table class="table table-sm table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descrição</th>
+                <th class="text-center">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="m : ${list}" >
+                <td th:text="${m.id}"></td>
+                <td th:text="${m.descricao}"></td>
+                <td class="text-center" style="width: 15%;">
+                    <a class="btn btn-secondary" th:href="@{/categorias/update/{id}(id=${m.id})}">
+                        Editar
+                    </a>
+
+                    <a class="btn btn-danger" th:href="@{/categorias/destroy/{id}(id=${m.id})}" >
+                        Remover
+                    </a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+  <div th:replace="~{fragments :: scripts}"></div>
+</body>
+</html>
+

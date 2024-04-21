@@ -1,6 +1,5 @@
 package com.souza.kronos.models;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,30 +12,25 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+@Entity
+@Table(name = "Categoria")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-@Entity
-@Table(name = "unidade")
-public class Unidade {
+public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "codigo")
     @NotBlank
-    @Size(min = 1, max = 3)
-    private String codigo;
-
-    @Column
-    @NotBlank
-    @Size(min = 3, max = 30)
+    @Size(max = 60)
     private String descricao;
 
     public String toString()
     {
-        return this.codigo;
+        return this.descricao;
     }
+
 }

@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="~{fragments :: head('Estado')}" ></head>
+<head th:replace="~{fragments :: head('Produto')}" ></head>
 <body>
   <div align="center" class="container-fluid"><nav th:replace="~{fragments :: navbar}"></nav></div>
   <div class="container-fluid pt-2 d-flex justify-content-center" >
     <div class="col-6">
 
-        <form th:action="@{/estados/destroy/estado}" class="" method="POST" >
+        <form th:action="@{/produtos/destroy/produto}" class="" method="POST" >
             <input type="hidden" name="id" th:value="${obj.id}">
             
             <div class="card">
                 <div class="card-header">
-                    Remoção de Estado
+                    Remoção de Produto
                 </div>
                 <div class="card-body">
                     <h6> Confirma a remover <span th:text="${obj.descricao}"></span> ?</h6>
                 </div>
                 <div class="card-footer">
                     <button class="btn btn-danger" type="submit">Remover</button>
-                    <a class="btn btn-secondary" th:href="@{/estados}">Voltar</a>
+                    <a class="btn btn-secondary" th:href="@{/produtos}">Voltar</a>
                 </div>
             </div>
             

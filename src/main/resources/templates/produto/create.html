@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments :: head('Produto')}" ></head>
+<body>
+  <div align="center" class="container-fluid"><nav th:replace="~{fragments :: navbar}"></nav></div>
+   
+  <div class="container-fluid pt-2 d-flex justify-content-center">
+    <div class="col-12">
+
+        <form th:action="@{/produtos/create}" th:object="${obj}" class="" method="post" enctype="multipart/form-data">
+            <div class="card">
+                <div class="card-header">
+                    <caption>Cadastro de Produto</caption>
+                </div>
+                <div class="card-body">
+                    <div class="row g-2 mb-3">
+                        
+                        <div class="col-2">
+                            <label for="gtin">GTIN</label>
+                            <input 
+                            maxlength="14"
+                            th:field="*{gtin}"
+                            class="form-control " type="text">
+                            <span class="text-danger" th:if="${#fields.hasErrors('gtin')}" th:errors="*{gtin}" ></span>
+                        </div>
+
+                        <div class="col-10">
+                            <label for="descricao">Descrição</label>
+                            <input 
+                            maxlength="60"
+                            th:field="*{descricao}"
+                            class="form-control " type="text">
+                            <span class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" ></span>
+                        </div>
+                    </div>
+
+                    <div class="row g-2 mb-3">
+                        <div class="col-2">
+                            <label for="unidade">Unidade</label>
+
+                            <select 
+
+                                class="form-select"
+                                th:field="*{unidade}" >
+                                <option th:each="p : ${listUnidades}" th:value="${p.id}" th:text="${p.codigo}"></option>
+
+                            </select>
+                            <span class="text-danger" th:if="${#fields.hasErrors('unidade')}" th:errors="*{unidade}" ></span>
+                        </div>
+
+                        <div class="col-3">
+                            <label for="categoria">Categoria</label>
+                            <select 
+                                class="form-select"
+                                th:field="*{categoria}" >
+                                <option th:each="p : ${listCategorias}" th:value="${p.id}" th:text="${p.descricao}" ></option>
+                            </select>
+                            <span class="text-danger" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}" ></span>
+                        </div>
+
+
+                        <div class="col-3">
+                            <label for="preco">Preço</label>
+                            <input 
+                            th:field="*{preco}"
+                            class="form-control " type="text">
+                            <span class="text-danger" th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}" ></span>
+                        </div>
+
+                        <div class="col-3">
+                            <label for="estoque">Estoque</label>
+                            <input 
+                            th:type="number"
+                            th:field="*{estoque}"
+                            class="form-control " type="text">
+                            <span class="text-danger" th:if="${#fields.hasErrors('estoque')}" th:errors="*{estoque}" ></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="card-footer">
+                    <button class="btn btn-primary" type="submit">Salvar</button>
+                    <a class="btn btn-secondary" th:href="@{/produtos}">Voltar</a>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</div>
+  
+  <div th:replace="~{fragments :: scripts}"></div>
+  
+</body>
+</html>

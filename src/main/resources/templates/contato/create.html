@@ -92,7 +92,7 @@
                             <label for="estado">Estado</label>
 
                             <select 
-                                onchange="loadMuniciios(this.value)"
+                                onchange="lookupMunicipiosByEstado(this.value)"
                                 class="form-select"
                                 th:field="*{estado}" >
                                 <option th:each="p : ${listEstados}" th:value="${p.id}" th:text="${p.id + ' - ' +  p.descricao}" selected></option>
@@ -126,26 +126,6 @@
 </div>
   
   <div th:replace="~{fragments :: scripts}"></div>
-  <script>
-    function loadMuniciios(estado_id) {
-        
-        $.ajax({
-            method: "get",
-            url: `http://localhost:3030/api/municipios/${estado_id}`,
-            success: (res) => {
-                $("#municipio option").remove()
-                if (res) {
-                    if (res.length > 0) {
-                        res.forEach((i) => {
-                            $("#municipio").append(`
-                                <option value="${i.id}">${i.descricao}</option>
-                            `);
-                        });
-                    }
-                }
-            }
-        })
-    }
-</script>
+  
 </body>
 </html>

@@ -4,31 +4,32 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.souza.kronos.models.Unidade;
-import com.souza.kronos.repositories.UnidadeRepository;
+
+import com.souza.kronos.models.Produto;
+import com.souza.kronos.repositories.ProdutoRepository;
 
 @Service
-public class UnidadeService {
-    
-    @Autowired
-    UnidadeRepository repository;
+public class ProdutoService {
 
-    public List<Unidade> listAll()
+    @Autowired
+    ProdutoRepository repository;
+
+    public List<Produto> listAll()
     {
         return repository.findAll();
     }
 
-    public void create(Unidade model)
+    public void create(Produto model)
     {
         repository.save(model);
     }
 
-    public void update(Unidade model)
+    public void update(Produto model)
     {
         repository.save(model);
     }
 
-    public Unidade findById(Long id)
+    public Produto findById(Long id)
     {
         return repository.findById(id).get();
         
@@ -38,5 +39,4 @@ public class UnidadeService {
     {
      repository.deleteById(id);
     }
-
 }
