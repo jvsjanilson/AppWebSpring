@@ -64,16 +64,16 @@
                             <label for="preco">Preço</label>
                             <input 
                             th:field="*{preco}"
-                            class="form-control " type="text">
+                            class="form-control preco" type="text">
                             <span class="text-danger" th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}" ></span>
                         </div>
 
                         <div class="col-3">
                             <label for="estoque">Estoque</label>
                             <input 
-                            th:type="number"
+                            th:type="text"
                             th:field="*{estoque}"
-                            class="form-control " type="text">
+                            class="form-control inteiro" >
                             <span class="text-danger" th:if="${#fields.hasErrors('estoque')}" th:errors="*{estoque}" ></span>
                         </div>
                     </div>
