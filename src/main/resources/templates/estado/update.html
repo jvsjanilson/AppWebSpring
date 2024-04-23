@@ -22,6 +22,7 @@
                             class="form-control" type="text">
                             <span class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}" ></span>
                         </div>
+
                         <div class="col-1">
                             <label for="uf">UF</label>
                             <input 
@@ -29,15 +30,7 @@
                             class="form-control" type="text">
                             <span class="text-danger" th:if="${#fields.hasErrors('uf')}" th:errors="*{uf}" ></span>
                         </div>
-                        <div class="col-3">
-                            <label for="pais">Pais</label>
-                            <select 
-                                class="form-select"
-                                th:field="*{pais}" >
-                                <option th:each="p : ${listPais}" th:value="${p.id}" th:text="${p.descricao}" ></option>
-                            </select>
-                            <span class="text-danger" th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}" ></span>
-                        </div>
+                        
                         <div class="col-6">
                             <label for="descricao">Descriição</label>
                             <input 
@@ -46,6 +39,16 @@
                                 class="form-control" type="text">
                             <span class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" ></span>
                         </div>
+
+                        <div class="col-3">
+                            <label for="pais">Pais</label>
+                            <select 
+                                class="form-select"
+                                th:field="*{pais}" >
+                                <option th:each="p : ${listPais}" th:value="${p.id}" th:text="${p.descricao}" ></option>
+                            </select>
+                            <span class="text-danger" th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}" ></span>
+                        </div>                        
                     </div>
                     
                 </div>

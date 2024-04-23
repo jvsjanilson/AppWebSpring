@@ -49,8 +49,8 @@ public class ProdutoController {
     public String create(Model model)
     {
         Produto obj = new Produto();
-        List<Unidade> listUnidades = unidadeService.listAll();
-        List<Categoria> listCategorias = categoriaService.listAll();
+        List<Unidade> listUnidades = unidadeService.lookup();
+        List<Categoria> listCategorias = categoriaService.lookup();
         model.addAttribute("listUnidades", listUnidades);
         model.addAttribute("listCategorias", listCategorias);
         model.addAttribute("obj", obj);
@@ -89,8 +89,8 @@ public class ProdutoController {
     public String edit(@PathVariable Long id, Model model)
     {
         Produto obj = service.findById(id) ;
-        List<Unidade> listUnidades = unidadeService.listAll();
-        List<Categoria> listCategorias = categoriaService.listAll();
+        List<Unidade> listUnidades = unidadeService.lookup();
+        List<Categoria> listCategorias = categoriaService.lookup();
         model.addAttribute("listUnidades", listUnidades);
         model.addAttribute("listCategorias", listCategorias);        
         model.addAttribute("obj", obj);

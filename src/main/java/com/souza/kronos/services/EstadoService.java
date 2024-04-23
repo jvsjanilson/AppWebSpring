@@ -1,7 +1,11 @@
 package com.souza.kronos.services;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import com.souza.kronos.models.Estado;
 import com.souza.kronos.repositories.EstadoRepository;
@@ -12,11 +16,15 @@ public class EstadoService {
     @Autowired
     EstadoRepository repository;
 
-   
-
-    public List<Estado> listAll()
+    public Page<Estado> listAll(int pageNumber, int pageSize)
     {
-        return repository.findAll();
+        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize, Sort.by("id").descending());
+        return repository.findAll(pageRequest);
+    }
+
+    public List<Estado> lookup()
+    {
+        return repository.findAll(Sort.by("uf"));
     }
 
     public void create(Estado model)

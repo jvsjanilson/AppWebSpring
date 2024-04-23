@@ -46,7 +46,7 @@ public class ContatoController {
     {
         Contato obj = new Contato();
         obj.setEstado(estadoService.findById(2L));
-        List<Estado> listEstados = estadoService.listAll();
+        List<Estado> listEstados = estadoService.lookup();
         List<Municipio> listMunicipios = municipioService.findByEstado(obj.getEstado());
 
         model.addAttribute("obj", obj);
@@ -62,7 +62,7 @@ public class ContatoController {
         service.validarContato(obj, bindingResult);
         
         if (bindingResult.hasErrors()) {
-            List<Estado> listEstados = estadoService.listAll();
+            List<Estado> listEstados = estadoService.lookup();
             List<Municipio> listMunicipios = municipioService.findByEstado(obj.getEstado());
            
             model.addAttribute("listEstados", listEstados);
@@ -95,7 +95,7 @@ public class ContatoController {
     {
         Contato obj = service.findById(id) ;
              
-        List<Estado> listEstados = estadoService.listAll();
+        List<Estado> listEstados = estadoService.lookup();
         List<Municipio> listMunicipios = municipioService.findByEstado(obj.getEstado());
 
         model.addAttribute("obj", obj);

@@ -35,23 +35,21 @@
 
         </tbody>
     </table>
-    <nav th:if="${list.totalPages>1}"  aria-label="Page navigation example">
+    <nav th:if="${list.totalPages>1}" aria-label="...">
         <ul class="pagination">
             <li class="page-item" th:class="${list.first} ? 'disabled' : ''">
-                <a class="page-link" th:href="@{'/municipios?page=' + ${list.number - 1}}">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
+                <a class="page-link" th:href="@{'/municipios?page=0'}">Primeira</a>
             </li>
 
-            <li  th:if="${list.totalPages>1}" th:each="i : ${#numbers.sequence(0, list.totalPages - 1)}">
-                <a class="page-link " th:href="@{'/municipios?page=' + ${i}}">[[${i + 1}]]</a>
+            <li class="page-item" th:class="${list.first} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/municipios?page=' + ${list.number - 1}}">Anterior</a>
             </li>
-   
-            <li  class="page-item" th:class="${list.last} ? 'disabled' : ''">
-                <a class="page-link" th:href="@{'/municipios?page=' + ${list.number + 1}}">
-                    
-                    <span th:text="${list.number}" aria-hidden="true">&raquo;</span>
-                </a>
+            <li class="page-item" th:class="${list.last} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/municipios?page=' + ${list.number + 1}}">Próximo</a>
+            </li>
+
+            <li class="page-item" th:class="${list.last} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/municipios?page=' + ${list.totalPages-1}}">Última</a>
             </li>
         </ul>
     </nav>

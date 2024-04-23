@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="m, iterStat : ${listUnidades}" >
+            <tr th:each="m, iterStat : ${list}" >
                 <td th:text="${m.id}"></td>
                 <td th:text="${m.codigo}"></td>
                 <td th:text="${m.descricao}"></td>
@@ -34,6 +34,24 @@
 
         </tbody>
     </table>
+    <nav th:if="${list.totalPages>1}" aria-label="...">
+        <ul class="pagination">
+            <li class="page-item" th:class="${list.first} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/unidades?page=0'}">Primeira</a>
+            </li>
+
+            <li class="page-item" th:class="${list.first} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/unidades?page=' + ${list.number - 1}}">Anterior</a>
+            </li>
+            <li class="page-item" th:class="${list.last} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/unidades?page=' + ${list.number + 1}}">Próximo</a>
+            </li>
+
+            <li class="page-item" th:class="${list.last} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/unidades?page=' + ${list.totalPages-1}}">Última</a>
+            </li>
+        </ul>
+    </nav>
 </div>
   <div th:replace="~{fragments :: scripts}"></div>
 </body>

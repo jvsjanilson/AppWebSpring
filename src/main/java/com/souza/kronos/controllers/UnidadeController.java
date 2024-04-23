@@ -1,8 +1,9 @@
 package com.souza.kronos.controllers;
 
 //framework
-import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,10 +28,13 @@ public class UnidadeController {
     UnidadeService service;
 
     @GetMapping
-    public String index(Model model)
+    public String index(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "10") int size,    
+        Model model)
     {
-        List<Unidade> listUsers = service.listAll();
-        model.addAttribute("listUnidades", listUsers);
+        Page<Unidade> listUsers = service.listAll(page, size);
+        model.addAttribute("list", listUsers);
         return "/unidade/index";
 
     }

@@ -20,7 +20,14 @@
                             class="form-control" type="text">
                             <span class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}" ></span>
                         </div>
-                       
+                        <div class="col-6">
+                            <label for="descricao">Descrição</label>
+                            <input 
+                            th:field="*{descricao}"
+                            class="form-control" type="text">
+                            <span class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" ></span>
+                        </div>
+
                         <div class="col-4">
                             <label for="estado">Estado</label>
                             <select 
@@ -29,15 +36,7 @@
                                 <option th:each="p : ${listEstados}" th:value="${p.id}" th:text="${p.descricao}" ></option>
                             </select>
                             <span class="text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}" ></span>
-                        </div>
-
-                        <div class="col-6">
-                            <label for="descricao">Descrição</label>
-                            <input 
-                            th:field="*{descricao}"
-                            class="form-control" type="text">
-                            <span class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" ></span>
-                        </div>
+                        </div>                        
                     </div>
                     
                 </div>

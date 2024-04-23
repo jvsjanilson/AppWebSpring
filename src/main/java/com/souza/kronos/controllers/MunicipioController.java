@@ -31,7 +31,7 @@ public class MunicipioController {
 
     @GetMapping
     public String index(@RequestParam(defaultValue = "0") int page,
-                        @RequestParam(defaultValue = "5") int size,
+                        @RequestParam(defaultValue = "10") int size,
                         Model model)
     {
         Page<Municipio> list = service.listAll(page, size);
@@ -44,7 +44,7 @@ public class MunicipioController {
     public String create(Model model)
     {
         Municipio obj = new Municipio();
-        List<Estado> listEstados = serviceEstado.listAll();
+        List<Estado> listEstados = serviceEstado.lookup();
         model.addAttribute("listEstados", listEstados);
         model.addAttribute("obj", obj);
         return "/municipio/create";
@@ -79,7 +79,7 @@ public class MunicipioController {
     @GetMapping("/update/{id}")
     public String edit(@PathVariable Long id, Model model)
     {
-        List<Estado> listEstados = serviceEstado.listAll();
+        List<Estado> listEstados = serviceEstado.lookup();
         Municipio obj = service.findById(id) ;
         model.addAttribute("obj", obj);
         model.addAttribute("listEstados", listEstados);

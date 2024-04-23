@@ -17,9 +17,9 @@
         </thead>
         <tbody>
             <tr th:each="m : ${list}" >
-                <td th:text="${m.id}"></td>
+                <td style="width: 10%;" th:text="${m.id}"></td>
                 <td th:text="${m.descricao}"></td>
-                <td class="text-center" style="width: 15%;">
+                <td class="text-center" style="width: 10%;">
                     <a class="btn btn-secondary" th:href="@{/categorias/update/{id}(id=${m.id})}">
                         Editar
                     </a>
@@ -32,6 +32,26 @@
 
         </tbody>
     </table>
+    <nav th:if="${list.totalPages>1}"  aria-label="...">
+
+        <ul th:if="${list.totalPages>1}" class="pagination">
+            <li class="page-item" th:class="${list.first} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/categorias?page=0'}">Primeira</a>
+            </li>
+            
+            <li class="page-item" th:class="${list.first} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/categorias?page=' + ${list.number - 1}}">Anterior</a>
+            </li>
+            <li class="page-item" th:class="${list.last} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/categorias?page=' + ${list.number + 1}}">Próximo</a>
+            </li>
+            
+            <li class="page-item" th:class="${list.last} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/categorias?page=' + ${list.totalPages-1}}">Última</a>
+            </li>
+        </ul>
+        
+    </nav>
 </div>
   <div th:replace="~{fragments :: scripts}"></div>
 </body>
