@@ -95,7 +95,7 @@
                                 onchange="lookupMunicipiosByEstado(this.value)"
                                 class="form-select"
                                 th:field="*{estado}" >
-                                <option th:each="p : ${listEstados}" th:value="${p.id}" th:text="${p.id + ' - ' +  p.descricao}" selected></option>
+                                <option th:each="p : ${listEstados}" th:value="${p.id}" th:text="${p.uf}" selected></option>
 
                             </select>
                             <span class="text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}" ></span>

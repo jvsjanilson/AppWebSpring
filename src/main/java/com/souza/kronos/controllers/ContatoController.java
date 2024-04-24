@@ -45,7 +45,7 @@ public class ContatoController {
     public String create(Model model)
     {
         Contato obj = new Contato();
-        obj.setEstado(estadoService.findById(2L));
+        obj.setEstado(estadoService.findById(1L));
         List<Estado> listEstados = estadoService.lookup();
         List<Municipio> listMunicipios = municipioService.findByEstado(obj.getEstado());
 

@@ -20,11 +20,11 @@
                 <td style="width: 10%;" th:text="${m.id}"></td>
                 <td th:text="${m.descricao}"></td>
                 <td class="text-center" style="width: 10%;">
-                    <a class="btn btn-secondary" th:href="@{/categorias/update/{id}(id=${m.id})}">
+                    <a class="btn btn-sm btn-secondary" th:href="@{/categorias/update/{id}(id=${m.id})}">
                         Editar
                     </a>
 
-                    <a class="btn btn-danger" th:href="@{/categorias/destroy/{id}(id=${m.id})}" >
+                    <a class="btn btn-sm btn-danger" th:href="@{/categorias/destroy/{id}(id=${m.id})}" >
                         Remover
                     </a>
                 </td>
