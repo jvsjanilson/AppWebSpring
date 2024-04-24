@@ -4,7 +4,7 @@
 <body>
   <div align="center" class="container-fluid"><nav th:replace="~{fragments :: navbar}"></nav></div>
   <div class="container-fluid pt-2 d-flex justify-content-center">
-    <div class="col-12">
+    <div class="col">
 
         <form th:action="@{/pais/update}" th:object="${obj}" class="" method="post" enctype="multipart/form-data">
             <input type="hidden"  th:field="*{id}" th:value="${obj.id}">
@@ -14,7 +14,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row g-3">
-                        <div class="col-3">
+                        <div class="col-12 col-md-3">
                             <label for="codigo">Código</label>
                             <input  autofocus
                             th:field="*{codigo}"
@@ -22,7 +22,7 @@
                             class="form-control " type="text">
                             <span class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}" ></span>
                         </div>
-                        <div class="col-9">
+                        <div class="col-12 col-md-9">
                             <label for="descricao">Descrição</label>
                             <input 
                                 th:field="*{descricao}"

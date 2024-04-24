@@ -2,57 +2,61 @@
 <html lang="en">
 <head th:replace="~{fragments :: head('País')}" ></head>
 <body>
-  <div align="center" class="container-fluid"><nav th:replace="~{fragments :: navbar}"></nav></div>
-  <div class="container-fluid pt-2">
-    <a th:href="@{/pais/create}" class="btn btn-primary">Novo País</a>
-    <hr>
-    <table class="table table-sm table-bordered">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Cód. IBGE</th>
-                <th>Descrição</th>
-                <th class="text-center">Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="m, iterStat : ${list}" >
-                <td th:text="${m.id}"></td>
-                <td th:text="${m.codigo}"></td>
-                <td th:text="${m.descricao}"></td>
-                <td class="text-center" style="width: 15%;">
-                    <a class="btn btn-sm btn-secondary" th:href="@{/pais/update/{id}(id=${m.id})}">
-                        Editar
-                    </a>
-
-                    <a class="btn btn-sm btn-danger" th:href="@{/pais/destroy/{id}(id=${m.id})}" >
-                        Remover
-                    </a>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-    <nav th:if="${list.totalPages>1}"  aria-label="...">
-
-        <ul th:if="${list.totalPages>1}" class="pagination">
-            <li class="page-item" th:class="${list.first} ? 'disabled' : ''">
-                <a class="page-link" th:href="@{'/pais?page=0'}">Primeira</a>
-            </li>
+    <div align="center" class="container-fluid"><nav th:replace="~{fragments :: navbar}"></nav></div>
+    
+    <div class="container-fluid pt-2">
+        <a th:href="@{/pais/create}" class="btn btn-primary">Novo País</a>
+        <hr>
+    
+        <div class="table-responsive">
             
-            <li class="page-item" th:class="${list.first} ? 'disabled' : ''">
-                <a class="page-link" th:href="@{'/pais?page=' + ${list.number - 1}}">Anterior</a>
-            </li>
-            <li class="page-item" th:class="${list.last} ? 'disabled' : ''">
-                <a class="page-link" th:href="@{'/pais?page=' + ${list.number + 1}}">Próximo</a>
-            </li>
-            
-            <li class="page-item" th:class="${list.last} ? 'disabled' : ''">
-                <a class="page-link" th:href="@{'/pais?page=' + ${list.totalPages-1}}">Última</a>
-            </li>
-        </ul>
-    </nav>
-</div>
+            <table class="table table-sm table-bordered">
+                <thead>
+                    <tr>
+                        <th>Cód. IBGE</th>
+                        <th>Descrição</th>
+                        <th class="text-center acoes">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="m : ${list}" >
+                        <td th:text="${m.codigo}"></td>
+                        <td th:text="${m.descricao}"></td>
+                        <td class="text-center" >
+                            <a class="btn btn-sm btn-secondary" th:href="@{/pais/update/{id}(id=${m.id})}">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            
+                            <a class="btn btn-sm btn-danger" th:href="@{/pais/destroy/{id}(id=${m.id})}" >
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <nav th:if="${list.totalPages>1}"  aria-label="...">
+                
+                <ul th:if="${list.totalPages>1}" class="pagination">
+                    <li class="page-item" th:class="${list.first} ? 'disabled' : ''">
+                        <a class="page-link" th:href="@{'/pais?page=0'}">Primeira</a>
+                    </li>
+                    
+                    <li class="page-item" th:class="${list.first} ? 'disabled' : ''">
+                        <a class="page-link" th:href="@{'/pais?page=' + ${list.number - 1}}">Anterior</a>
+                    </li>
+                    <li class="page-item" th:class="${list.last} ? 'disabled' : ''">
+                        <a class="page-link" th:href="@{'/pais?page=' + ${list.number + 1}}">Próximo</a>
+                    </li>
+                    
+                    <li class="page-item" th:class="${list.last} ? 'disabled' : ''">
+                        <a class="page-link" th:href="@{'/pais?page=' + ${list.totalPages-1}}">Última</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    
+    </div>
   <div th:replace="~{fragments :: scripts}"></div>
 </body>
 </html>
