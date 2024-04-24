@@ -14,7 +14,7 @@
                 <th>Nome</th>
                 <th>Nome Fantasia</th>
                 <th>Documento</th>
-                <th class="text-center">Ações</th>
+                <th class="text-center acoes">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -23,12 +23,12 @@
                 <td th:text="${m.nome}"></td>
                 <td th:text="${m.nomeFantasia}"></td>
                 <td th:text="${m.documento}"></td>
-                <td class="text-center" style="width: 15%;">
+                <td class="text-center">
                     <a class="btn btn-sm btn-secondary" th:href="@{/contatos/update/{id}(id=${m.id})}">
-                        Editar
+                        <i class="fa fa-pencil"></i>
                     </a>
                     <a class="btn btn-sm btn-danger" th:href="@{/contatos/destroy/{id}(id=${m.id})}" >
-                        Remover
+                        <i class="fa fa-trash"></i>
                     </a>
                 </td>
             </tr>

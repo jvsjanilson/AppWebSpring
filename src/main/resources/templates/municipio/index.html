@@ -9,26 +9,24 @@
     <table class="table table-sm table-bordered">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Cód. IBGE</th>
+                <th style="width: 10%;">Cód. IBGE</th>
                 <th>Descrição</th>
                 <th>Estado</th>
-                <th class="text-center">Ações</th>
+                <th class="text-center acoes">Ações</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="m, iterStat : ${list}" >
-                <td th:text="${m.id}"></td>
+            <tr th:each="m : ${list}" >
                 <td th:text="${m.codigo}"></td>
                 <td th:text="${m.descricao}"></td>
                 <td th:text="${m.estado}"></td>
-                <td class="text-center" style="width: 15%;">
+                <td class="text-center" >
                     <a class="btn btn-sm btn-secondary" th:href="@{/municipios/update/{id}(id=${m.id})}">
-                        Editar
+                        <i class="fa fa-pencil"></i>
                     </a>
 
                     <a class="btn btn-sm btn-danger" th:href="@{/municipios/destroy/{id}(id=${m.id})}" >
-                        Remover
+                        <i class="fa fa-trash"></i>
                     </a>
                 </td>
             </tr>
