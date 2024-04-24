@@ -40,7 +40,6 @@
     </table>
             
     <nav th:if="${list.totalPages>1}"  aria-label="...">
-
         <ul th:if="${list.totalPages>1}" class="pagination">
             <li class="page-item" th:class="${list.first} ? 'disabled' : ''">
                 <a class="page-link" th:href="@{'/estados?page=0'}">Primeira</a>
