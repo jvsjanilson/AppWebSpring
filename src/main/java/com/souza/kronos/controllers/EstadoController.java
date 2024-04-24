@@ -47,7 +47,7 @@ public class EstadoController {
     public String create(Model model)
     {
         Estado obj = new Estado();
-        List<Pais> listPais = servicePais.listAll();
+        List<Pais> listPais = servicePais.lookup();
         model.addAttribute("listPais", listPais);
         model.addAttribute("obj", obj);
         return "/estado/create";
@@ -83,7 +83,7 @@ public class EstadoController {
     @GetMapping("/update/{id}")
     public String edit(@PathVariable Long id, Model model)
     {
-        List<Pais> listPais = servicePais.listAll();
+        List<Pais> listPais = servicePais.lookup();
         Estado obj = service.findById(id) ;
         model.addAttribute("obj", obj);
         model.addAttribute("listPais", listPais);

@@ -1,5 +1,7 @@
 package com.souza.kronos.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,6 +21,11 @@ public class PaisService {
     {
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize, Sort.by("id").descending());
         return repository.findAll(pageRequest);
+    }
+
+    public List<Pais> lookup()
+    {
+        return repository.findAll(Sort.by("descricao"));
     }
 
     public void create(Pais model)
