@@ -33,6 +33,25 @@
 
         </tbody>
     </table>
+    <nav th:if="${list.totalPages>1}"  aria-label="...">
+
+        <ul th:if="${list.totalPages>1}" class="pagination">
+            <li class="page-item" th:class="${list.first} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/pais?page=0'}">Primeira</a>
+            </li>
+            
+            <li class="page-item" th:class="${list.first} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/pais?page=' + ${list.number - 1}}">Anterior</a>
+            </li>
+            <li class="page-item" th:class="${list.last} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/pais?page=' + ${list.number + 1}}">Próximo</a>
+            </li>
+            
+            <li class="page-item" th:class="${list.last} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/pais?page=' + ${list.totalPages-1}}">Última</a>
+            </li>
+        </ul>
+    </nav>
 </div>
   <div th:replace="~{fragments :: scripts}"></div>
 </body>

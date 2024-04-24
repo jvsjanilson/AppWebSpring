@@ -3,6 +3,7 @@ package com.souza.kronos.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +24,12 @@ public class PaisController {
     PaisService service;
 
     @GetMapping
-    public String index(Model model)
+    public String index(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "10") int size,
+        Model model)
     {
-        List<Pais> list = service.listAll();
+        Page<Pais> list = service.listAll(page, size);
         model.addAttribute("list", list);
         return "/pais/index";
 
