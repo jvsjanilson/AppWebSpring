@@ -9,14 +9,14 @@
         <form action="#" th:action="@{/pais/search}" method="post">
             <div class="row g-3">
                 <div class="col-3 col-md-auto">
-                    <a th:href="@{/pais/create}" class="btn btn-primary">Novo País</a>
+                    <a th:href="@{/pais/create}" class="btn btn-primary" title="Novo"><i class="fa fa-plus"></i></a>
                 </div>
 
                 <div class="col-9 col-md-auto">
 
                     <div class="input-group mb-3">
                         
-                        <input class="form-control" type="search" name="q" th:value="${q}" />
+                        <input class="form-control" type="search" name="q" th:value="${q}"  />
                         <button class="btn btn-primary" type="submit">Procurar</button>
                     </div>
                 </div>

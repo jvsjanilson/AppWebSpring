@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.souza.kronos.models.Categoria;
+import com.souza.kronos.models.Municipio;
 import com.souza.kronos.services.CategoriaService;
 
 import jakarta.validation.Valid;
@@ -35,6 +36,23 @@ public class CategoriaController {
         return "/categoria/index";
 
     }
+    @PostMapping("/search")
+    public String search(
+        @RequestParam(defaultValue = "", required = false) String q,
+        Model model )
+    {
+        if (q != "") {
+            Page<Categoria> list;
+            list = service.search(q);
+            model.addAttribute("q", q);
+            model.addAttribute("list", list);
+            model.addAttribute("currentPage", list.getNumber());
+            model.addAttribute("totalPages", list.getTotalPages());
+            return "/categoria/index";
+        } 
+        
+        return "redirect:/categorias";
+    }    
 
     @GetMapping("/create")
     public String create(Model model)

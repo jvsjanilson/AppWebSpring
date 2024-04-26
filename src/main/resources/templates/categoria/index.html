@@ -4,7 +4,23 @@
 <body>
   <div align="center" class="container-fluid"><nav th:replace="~{fragments :: navbar}"></nav></div>
   <div class="container-fluid pt-2">
-    <a th:href="@{/categorias/create}" class="btn  btn-primary">Nova Categoria</a>
+
+    <form action="#" th:action="@{/categorias/search}" method="post">
+        <div class="row g-3">
+            <div class="col-3 col-md-auto">
+                <a th:href="@{/categorias/create}" class="btn btn-primary" title="Novo"><i class="fa fa-plus"></i></a>
+            </div>
+
+            <div class="col-9 col-md-auto">
+
+                <div class="input-group mb-3">
+                    
+                    <input class="form-control" type="search" name="q" th:value="${q}"  />
+                    <button class="btn btn-primary" type="submit">Procurar</button>
+                </div>
+            </div>
+        </div>
+    </form>
 
     <hr class="mt-0 border border-black">
     <table class="table table-sm table-bordered">
