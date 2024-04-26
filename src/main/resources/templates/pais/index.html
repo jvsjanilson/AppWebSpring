@@ -9,7 +9,7 @@
         <form action="#" th:action="@{/pais/search}" method="post">
             <div class="row g-3">
                 <div class="col-3 col-md-auto">
-                    <a th:href="@{/pais/create}" class="btn btn-primary" title="Novo"><i class="fa fa-plus"></i></a>
+                    <a th:href="@{/pais/create}" class="btn btn-primary rounded-pill" title="Novo"><i class="fa fa-plus"></i></a>
                 </div>
 
                 <div class="col-9 col-md-auto">
@@ -17,7 +17,7 @@
                     <div class="input-group mb-3">
                         
                         <input class="form-control" type="search" name="q" th:value="${q}"  />
-                        <button class="btn btn-primary" type="submit">Procurar</button>
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
             <table class="table table-sm table-bordered">
                 <thead>
                     <tr>
-                        <th>Cód. IBGE</th>
+                        <th class="col-pk">Cód. IBGE</th>
                         <th>Descrição</th>
                         <th class="text-center acoes">Ações</th>
                     </tr>
@@ -56,19 +56,19 @@
             <nav th:if="${list.totalPages>1}"  aria-label="...">
                 
                 <ul th:if="${list.totalPages>1}" class="pagination">
-                    <li class="page-item" th:class="${list.first} ? 'disabled' : ''">
-                        <a class="page-link" th:href="@{'/pais?page=0'}">Primeira</a>
+                    <li class="page-item" th:classappend="${list.first} ? 'disabled' : ''">
+                        <a class="page-link" th:href="@{'/pais?page=0'}"><i class="fa-solid fa-angles-left"></i></a>
                     </li>
                     
-                    <li class="page-item" th:class="${list.first} ? 'disabled' : ''">
-                        <a class="page-link" th:href="@{'/pais?page=' + ${list.number - 1}}">Anterior</a>
+                    <li class="page-item" th:classappend="${list.first} ? 'disabled' : ''">
+                        <a class="page-link" th:href="@{'/pais?page=' + ${list.number - 1}}"><i class="fa-solid fa-angle-left"></i></a>
                     </li>
-                    <li class="page-item" th:class="${list.last} ? 'disabled' : ''">
-                        <a class="page-link" th:href="@{'/pais?page=' + ${list.number + 1}}">Próximo</a>
+                    <li class="page-item" th:classappend="${list.last} ? 'disabled' : ''">
+                        <a class="page-link" th:href="@{'/pais?page=' + ${list.number + 1}}"><i class="fa-solid fa-angle-right"></i></a>
                     </li>
                     
-                    <li class="page-item" th:class="${list.last} ? 'disabled' : ''">
-                        <a class="page-link" th:href="@{'/pais?page=' + ${list.totalPages-1}}">Última</a>
+                    <li class="page-item" th:classappend="${list.last} ? 'disabled' : ''">
+                        <a class="page-link" th:href="@{'/pais?page=' + ${list.totalPages-1}}"><i class="fa-solid fa-angles-right"></i></a>
                     </li>
                 </ul>
             </nav>
