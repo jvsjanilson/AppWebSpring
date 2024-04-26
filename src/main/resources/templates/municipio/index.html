@@ -4,7 +4,25 @@
 <body>
   <div align="center" class="container-fluid"><nav th:replace="~{fragments :: navbar}"></nav></div>
   <div class="container-fluid pt-2">
-    <a th:href="@{/municipios/create}" class="btn btn-primary">Novo Município</a>
+    
+
+    <div class="row">
+        <div class="col-auto">
+            <a th:href="@{/municipios/create}" class="btn btn-primary">Novo Município</a>
+
+        </div>
+        <div class="col-auto">
+
+            <form action="#" th:action="@{/municipios/search}" method="post">
+                <div class="input-group mb-3">
+
+                    <input class="form-control" type="search" name="q" th:value="${q}" />
+                    <button class="btn btn-primary" type="submit">Procurar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <hr>
     <table class="table table-sm table-bordered">
         <thead>

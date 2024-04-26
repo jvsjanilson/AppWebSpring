@@ -40,6 +40,24 @@ public class MunicipioController {
 
     }
 
+    @PostMapping("/search")
+    public String search(
+        @RequestParam(defaultValue = "", required = false) String q,
+        Model model )
+    {
+        if (q != "") {
+            Page<Municipio> list;
+            list = service.search(q);
+            model.addAttribute("q", q);
+            model.addAttribute("list", list);
+            model.addAttribute("currentPage", list.getNumber());
+            model.addAttribute("totalPages", list.getTotalPages());
+            return "/municipio/index";
+        } 
+        
+        return "redirect:/municipios";
+    }
+
     @GetMapping("/create")
     public String create(Model model)
     {
