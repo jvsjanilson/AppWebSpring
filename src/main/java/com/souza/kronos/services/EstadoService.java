@@ -23,6 +23,12 @@ public class EstadoService {
         return repository.findAll(pageRequest);
     }
 
+    public Page<Estado> search(String search)
+    {
+        PageRequest pageRequest = PageRequest.of(0, 10, Sort.by("id").descending());
+        return repository.findByUfContainingOrDescricaoContaining(search, search, pageRequest);
+    }
+
     public List<Estado> lookup()
     {
         return repository.findAll(Sort.by("uf"));

@@ -39,8 +39,28 @@ public class EstadoController {
     {
         Page<Estado> list = service.listAll(page, size);
         model.addAttribute("list", list);
+        model.addAttribute("currentPage", list.getNumber());
+        model.addAttribute("totalPages", list.getTotalPages());
         return "/estado/index";
 
+    }
+
+    @PostMapping("/search")
+    public String search(
+        @RequestParam(defaultValue = "", required = false) String q,
+        Model model )
+    {
+        if (q != "") {
+            Page<Estado> list;
+            list = service.search(q);
+            model.addAttribute("q", q);
+            model.addAttribute("list", list);
+            model.addAttribute("currentPage", list.getNumber());
+            model.addAttribute("totalPages", list.getTotalPages());
+            return "/estado/index";
+        } 
+        
+        return "redirect:/estados";
     }
 
     @GetMapping("/create")
