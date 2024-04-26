@@ -23,6 +23,12 @@ public class PaisService {
         return repository.findAll(pageRequest);
     }
 
+    public Page<Pais> search(String search)
+    {
+        PageRequest pageRequest = PageRequest.of(0, 10, Sort.by("id").descending());
+        return repository.findByDescricaoContaining(search, pageRequest);
+    }
+
     public List<Pais> lookup()
     {
         return repository.findAll(Sort.by("descricao"));

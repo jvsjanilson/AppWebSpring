@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head th:replace="~{fragments :: head('País')}" ></head>
 <body>
     <div align="center" class="container-fluid"><nav th:replace="~{fragments :: navbar}"></nav></div>
     
     <div class="container-fluid pt-2">
-        <a th:href="@{/pais/create}" class="btn btn-primary">Novo País</a>
-        <hr>
+
+        <form action="#" th:action="@{/pais/search}" method="post">
+            <div class="row g-3">
+                <div class="col-3 col-md-auto">
+                    <a th:href="@{/pais/create}" class="btn btn-primary">Novo País</a>
+                </div>
+
+                <div class="col-9 col-md-auto">
+
+                    <div class="input-group mb-3">
+                        
+                        <input class="form-control" type="search" name="q" th:value="${q}" />
+                        <button class="btn btn-primary" type="submit">Procurar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <hr class="mt-0 border border-black">
     
         <div class="table-responsive">
             
@@ -35,6 +52,7 @@
                     
                 </tbody>
             </table>
+
             <nav th:if="${list.totalPages>1}"  aria-label="...">
                 
                 <ul th:if="${list.totalPages>1}" class="pagination">
@@ -57,6 +75,7 @@
         </div>
     
     </div>
-  <div th:replace="~{fragments :: scripts}"></div>
+
+    <div th:replace="~{fragments :: scripts}"></div>
 </body>
 </html>

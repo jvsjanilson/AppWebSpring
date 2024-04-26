@@ -2,48 +2,51 @@
 <html lang="en">
 <head th:replace="~{fragments :: head('País')}" ></head>
 <body>
-  <div align="center" class="container-fluid"><nav th:replace="~{fragments :: navbar}"></nav></div>
-  <div class="container-fluid pt-2 d-flex justify-content-center">
-    <div class="col">
+    <div align="center" class="container-fluid"><nav th:replace="~{fragments :: navbar}"></nav></div>
+    
+    <div class="container-fluid pt-2 d-flex justify-content-center">
+        <div class="col">
 
-        <form th:action="@{/pais/update}" th:object="${obj}" class="" method="post" enctype="multipart/form-data">
-            <input type="hidden"  th:field="*{id}" th:value="${obj.id}">
-            <div class="card">
-                <div class="card-header">
-                    <caption>Edição de País</caption>
-                </div>
-                <div class="card-body">
-                    <div class="row g-3">
-                        <div class="col-12 col-md-3">
-                            <label for="codigo">Código</label>
-                            <input  autofocus
-                            th:field="*{codigo}"
-                            th:value="${obj.codigo}"
-                            class="form-control " type="text">
-                            <span class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}" ></span>
+            <form th:action="@{/pais/update}" th:object="${obj}" class="" method="post" enctype="multipart/form-data">
+                <input type="hidden"  th:field="*{id}" th:value="${obj.id}">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div>
+                            <button class="btn btn-primary" type="submit">Gravar</button>
+                            <a class="btn btn-secondary" th:href="@{/pais}">Voltar</a>
                         </div>
-                        <div class="col-12 col-md-9">
-                            <label for="descricao">Descrição</label>
-                            <input 
-                                th:field="*{descricao}"
-                                th:value="${obj.descricao}"
+                        <caption>Cadastro de Pais</caption>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-12 col-md-3">
+                                <label for="codigo">Código</label>
+                                <input  autofocus
+                                th:field="*{codigo}"
+                                th:value="${obj.codigo}"
                                 class="form-control " type="text">
-                            <span class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" ></span>
+                                <span class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}" ></span>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <label for="descricao">Descrição</label>
+                                <input 
+                                    th:field="*{descricao}"
+                                    th:value="${obj.descricao}"
+                                    class="form-control " type="text">
+                                <span class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" ></span>
+                            </div>
                         </div>
+                        
                     </div>
                     
                 </div>
                 
-                <div class="card-footer">
-                    <button class="btn btn-primary" type="submit">Salvar</button>
-                    <a class="btn btn-secondary" th:href="@{/pais}">Voltar</a>
-                </div>
-            </div>
-            
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-  <div th:replace="~{fragments :: scripts}"></div>
+    
+    <div th:replace="~{fragments :: scripts}"></div>
 </body>
 </html>
 <!DOCTYPE html>
