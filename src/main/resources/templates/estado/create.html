@@ -8,12 +8,18 @@
 
         <form th:action="@{/estados/create}" th:object="${obj}" class="" method="post" enctype="multipart/form-data">
             <div class="card">
-                <div class="card-header">
+                
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <button class="btn btn-primary" type="submit">Gravar</button>
+                        <a class="btn btn-secondary" th:href="@{/estados}">Voltar</a>
+                    </div>
                     <caption>Cadastro de Estado</caption>
                 </div>
+
                 <div class="card-body">
                     <div class="row g-3">
-                        <div class="col-2">
+                        <div class="col-12 col-md-2">
                             <label for="cod_ibge">Cód. IBGE</label>
                             <input 
                             th:field="*{codigo}" autofocus
@@ -21,7 +27,7 @@
                             <span class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}" ></span>
                         </div>
 
-                        <div class="col-1">
+                        <div class="col-12 col-md-1">
                             <label for="uf">UF</label>
                             <input 
                             th:field="*{uf}"
@@ -29,7 +35,7 @@
                             <span class="text-danger" th:if="${#fields.hasErrors('uf')}" th:errors="*{uf}" ></span>
                         </div>
 
-                        <div class="col-6">
+                        <div class="col-12 col-md-6">
                             <label for="descricao">Descriição</label>
                             <input 
                             th:field="*{descricao}"
@@ -37,7 +43,7 @@
                             <span class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" ></span>
                         </div>
 
-                        <div class="col-3">
+                        <div class="col-12 col-md-3">
                             <label for="pais">Pais</label>
                             <select 
                                 class="form-select"
@@ -47,15 +53,8 @@
                             <span class="text-danger" th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}" ></span>
                         </div>                        
                     </div>
-                    
-                </div>
-                
-                <div class="card-footer">
-                    <button class="btn btn-primary" type="submit">Salvar</button>
-                    <a class="btn btn-secondary" th:href="@{/estados}">Voltar</a>
                 </div>
             </div>
-            
         </form>
     </div>
 </div>  
