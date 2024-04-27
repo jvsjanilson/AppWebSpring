@@ -10,19 +10,21 @@
     <table class="table table-sm table-bordered">
         <thead>
             <tr>
-                <th>Id</th>
+                
+                <th class="col-cpfcnpj" >Documento</th>
                 <th>Nome</th>
                 <th>Nome Fantasia</th>
-                <th>Documento</th>
+                <th>Cidade</th>
                 <th class="text-center acoes">Ações</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="m, iterStat : ${list}" >
-                <td th:text="${m.id}"></td>
+            <tr th:each="m : ${list}" >
+
+                <td th:text="${m.documento}"></td>
                 <td th:text="${m.nome}"></td>
                 <td th:text="${m.nomeFantasia}"></td>
-                <td th:text="${m.documento}"></td>
+                <td th:text="${m.municipio.toString() + '/'+ m.estado.toString()}" ></td>
                 <td class="text-center">
                     <a class="btn btn-sm btn-secondary" th:href="@{/contatos/update/{id}(id=${m.id})}">
                         <i class="fa fa-pencil"></i>

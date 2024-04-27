@@ -55,6 +55,13 @@ public class Contato {
     @Size(max = 120)
     private String complemento;
     
+    @Size(max = 14)
+    private String celular;
+
+    @Size(max = 120)
+    private String email;
+
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     //@OnDelete(action = OnDeleteAction.CASCADE)
     private Estado estado;
