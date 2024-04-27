@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
+
 //App
 import com.souza.kronos.models.Unidade;
 import com.souza.kronos.services.UnidadeService;
@@ -37,6 +38,24 @@ public class UnidadeController {
         model.addAttribute("list", listUsers);
         return "/unidade/index";
 
+    }
+
+    @PostMapping("/search")
+    public String search(
+        @RequestParam(defaultValue = "", required = false) String q,
+        Model model )
+    {
+        if (q != "") {
+            Page<Unidade> list;
+            list = service.search(q);
+            model.addAttribute("q", q);
+            model.addAttribute("list", list);
+            model.addAttribute("currentPage", list.getNumber());
+            model.addAttribute("totalPages", list.getTotalPages());
+            return "/unidade/index";
+        } 
+        
+        return "redirect:/unidades";
     }
 
     @GetMapping("/create")

@@ -27,12 +27,12 @@ public class Unidade {
 
     @Column(name = "codigo")
     @NotBlank
-    @Size(min = 1, max = 3)
+    @Size(max = 3)
     private String codigo;
 
     @Column
     @NotBlank
-    @Size(min = 3, max = 30)
+    @Size(max = 30)
     private String descricao;
 
     public String toString()

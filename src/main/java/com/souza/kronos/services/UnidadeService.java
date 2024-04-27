@@ -24,6 +24,13 @@ public class UnidadeService {
         return repository.findAll(pageRequest);
     }
 
+    public Page<Unidade> search(String search)
+    {
+        PageRequest pageRequest = PageRequest.of(0, 10, Sort.by("id").descending());
+        return repository.findByDescricaoContainingOrCodigoContaining(search, search, pageRequest);
+    }
+
+
     public List<Unidade> lookup()
     {
         return repository.findAll();

@@ -9,12 +9,18 @@
         <form th:action="@{/unidades/update}" th:object="${unidade}" class="" method="post" enctype="multipart/form-data">
             <input type="hidden"  th:field="*{id}" th:value="${unidade.id}">
             <div class="card">
-                <div class="card-header">
+   
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> Gravar</button>
+                        <a class="btn btn-secondary" th:href="@{/unidades}"><i class="fa fa-undo"></i> Voltar</a>
+                    </div>
                     <caption>Edição de unidade</caption>
                 </div>
+
                 <div class="card-body">
                     <div class="row g-3">
-                        <div class="col-3">
+                        <div class="col-12 col-md-3">
                             <label for="codigo">Código</label>
                             <input  autofocus
                             th:field="*{codigo}"
@@ -22,7 +28,7 @@
                             class="form-control " type="text">
                             <span class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}" ></span>
                         </div>
-                        <div class="col-9">
+                        <div class="col-12 col-md-9">
                             <label for="descricao">Descrição</label>
                             <input 
                                 th:field="*{descricao}"
@@ -34,10 +40,7 @@
                     
                 </div>
                 
-                <div class="card-footer">
-                    <button class="btn  btn-primary" type="submit">Salvar</button>
-                    <a class="btn  btn-secondary" th:href="@{/unidades}">Voltar</a>
-                </div>
+
             </div>
             
         </form>
