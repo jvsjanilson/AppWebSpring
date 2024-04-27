@@ -37,7 +37,7 @@ public class ContatoService {
      public Page<Contato> search(String search)
     {
         PageRequest pageRequest = PageRequest.of(0, 10, Sort.by("id").descending());
-        return repository.findByNomeContainingOrNomeFantasiaContainingOrDocumentoContaining(search, search, search,  pageRequest);
+        return repository.search(search, pageRequest);
     }
 
     public List<Contato> listAll()
