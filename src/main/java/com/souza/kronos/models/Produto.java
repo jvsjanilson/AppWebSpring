@@ -1,7 +1,6 @@
 package com.souza.kronos.models;
 
 import java.math.BigDecimal;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -49,5 +48,8 @@ public class Produto {
     private BigDecimal preco;
 
     private Integer estoque;
+
+    private String imagem;
+
     
 }

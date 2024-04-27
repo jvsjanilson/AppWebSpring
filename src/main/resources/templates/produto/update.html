@@ -21,7 +21,12 @@
 
                 <div class="card-body">
                     <div class="row g-2 mb-3">
-                        
+                        <div class="col-12 col-md-2 border p-1">
+                            <img th:if="${obj.imagem != null}" th:src="@{'/' + ${obj.imagem}}" style="max-width: 300px;"/>
+                            <label th:if="${obj.imagem == null}" for="imagem">Imagem:</label>
+                            <input type="file" class="form-control pt-1" id="image" name="image" accept="image/*">
+                        </div>
+
                         <div class="col-12 col-md-2">
                             <label for="gtin">GTIN</label>
                             <input 
@@ -31,7 +36,7 @@
                             <span class="text-danger" th:if="${#fields.hasErrors('gtin')}" th:errors="*{gtin}" ></span>
                         </div>
 
-                        <div class="col-12 col-md-10">
+                        <div class="col-12 col-md-8">
                             <label for="descricao">Descrição</label>
                             <input 
                             maxlength="60"
@@ -39,6 +44,7 @@
                             class="form-control " type="text">
                             <span class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" ></span>
                         </div>
+                       
                     </div>
 
                     <div class="row g-2 mb-3">
@@ -83,6 +89,9 @@
                             class="form-control inteiro" >
                             <span class="text-danger" th:if="${#fields.hasErrors('estoque')}" th:errors="*{estoque}" ></span>
                         </div>
+                    </div>
+                    <div class="row g-2 mb-3">
+                        
                     </div>
                     
                 </div>

@@ -1,5 +1,9 @@
 package com.souza.kronos.controllers;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.souza.kronos.models.Categoria;
 import com.souza.kronos.models.Produto;
 import com.souza.kronos.models.Unidade;
@@ -25,6 +31,9 @@ import jakarta.validation.Valid;
 @Controller
 @RequestMapping("/produtos")
 public class ProdutoController {
+
+    private static String UPLOAD_DIR = "uploads/";
+
     
     @Autowired
     ProdutoService service;
@@ -117,8 +126,29 @@ public class ProdutoController {
     }
 
     @PostMapping("/update")
-    public String update( @Valid Produto obj, BindingResult bindingResult)
+    public String update(
+        @Valid Produto obj, 
+        @RequestParam("image") MultipartFile file,
+        BindingResult bindingResult
+    )
     {
+        final Path directory = Paths.get(UPLOAD_DIR);
+
+
+        if (file != null && !file.isEmpty()) {
+            try {
+
+                if (!Files.exists(directory)) {
+                    Files.createDirectories(directory);
+                }
+               
+                Path path = Paths.get(UPLOAD_DIR + file.getOriginalFilename());
+                Files.write(path, file.getBytes());
+                obj.setImagem(file.getOriginalFilename());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         
 
         if (bindingResult.hasErrors()) {
