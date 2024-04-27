@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="row g-2 mb-3">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-4">
                             <label for="bairro">Bairro</label>
                             <input 
                             th:field="*{bairro}"
@@ -83,7 +83,7 @@
                             <span class="text-danger" th:if="${#fields.hasErrors('bairro')}" th:errors="*{bairro}" ></span>
                         </div>
 
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-3">
                             <label for="complemento">Complemento</label>
                             <input 
                             th:field="*{complemento}"
@@ -91,10 +91,27 @@
                             <span class="text-danger" th:if="${#fields.hasErrors('complemento')}" th:errors="*{complemento}" ></span>
                         </div>
 
+                        <div class="col-12 col-md-2">
+                            <label for="celular">Celular</label>
+                            <input 
+                            th:field="*{celular}"
+                            class="form-control cel" type="text">
+                            <span class="text-danger" th:if="${#fields.hasErrors('celular')}" th:errors="*{celular}" ></span>
+                        </div>
+
+
+                        <div class="col-12 col-md-3">
+                            <label for="email">E-mail</label>
+                            <input 
+                            th:field="*{email}"
+                            class="form-control " type="text">
+                            <span class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" ></span>
+                        </div>
+
                     </div>
 
                     <div class="row g-2 mb-3">
-                        <div class="col-12 col-md-2">
+                        <div class="col-12 col-md-1">
                             <label for="estado">Estado</label>
 
                             <select 
@@ -107,7 +124,7 @@
                             <span class="text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}" ></span>
                         </div>
 
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-4">
                             <label for="municipio">Municípios</label>
                             <select 
                                 class="form-select"

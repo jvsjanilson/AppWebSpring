@@ -22,3 +22,4 @@ function lookupMunicipiosByEstado(estado_id) {
 
 $(".preco").maskMoney({prefix:'', allowNegative: false, thousands:'.', decimal:',', affixesStay: true, precision:2, selectAllOnFocus: true, allowZero: true});
 $(".inteiro").maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'', affixesStay: false, precision:0, selectAllOnFocus: true, allowZero: true});
+$(".cel").mask("(00)0000-00009");

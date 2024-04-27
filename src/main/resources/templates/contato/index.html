@@ -31,7 +31,8 @@
                 <th class="col-cpfcnpj" >Documento</th>
                 <th>Nome</th>
                 <th>Nome Fantasia</th>
-                <th>Cidade</th>
+                <th class="col-w-15">Cidade</th>
+                <th class="col-default">Celular</th>
                 <th class="text-center acoes">Ações</th>
             </tr>
         </thead>
@@ -42,6 +43,7 @@
                 <td th:text="${m.nome}"></td>
                 <td th:text="${m.nomeFantasia}"></td>
                 <td th:text="${m.municipio.toString() + '/'+ m.estado.toString()}" ></td>
+                <td th:text="${m.celular}"></td>
                 <td class="text-center">
                     <a class="btn btn-sm btn-secondary" th:href="@{/contatos/update/{id}(id=${m.id})}">
                         <i class="fa fa-pencil"></i>
