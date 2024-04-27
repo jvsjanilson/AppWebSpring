@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.souza.kronos.models.Categoria;
-import com.souza.kronos.models.Municipio;
 import com.souza.kronos.services.CategoriaService;
 
 import jakarta.validation.Valid;
@@ -36,6 +34,7 @@ public class CategoriaController {
         return "/categoria/index";
 
     }
+    
     @PostMapping("/search")
     public String search(
         @RequestParam(defaultValue = "", required = false) String q,

@@ -34,6 +34,12 @@ public class ContatoService {
         return repository.findAll(pageRequest);
     }
 
+     public Page<Contato> search(String search)
+    {
+        PageRequest pageRequest = PageRequest.of(0, 10, Sort.by("id").descending());
+        return repository.findByNomeContainingOrNomeFantasiaContainingOrDocumentoContaining(search, search, search,  pageRequest);
+    }
+
     public List<Contato> listAll()
     {
         return repository.findAll();

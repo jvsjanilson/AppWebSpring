@@ -45,6 +45,25 @@ public class ContatoController {
         return "/contato/index";
     }
 
+     @PostMapping("/search")
+    public String search(
+        @RequestParam(defaultValue = "", required = false) String q,
+        Model model )
+    {
+        if (q != "") {
+            Page<Contato> list;
+            list = service.search(q);
+            model.addAttribute("q", q);
+            model.addAttribute("list", list);
+            model.addAttribute("currentPage", list.getNumber());
+            model.addAttribute("totalPages", list.getTotalPages());
+            return "/contato/index";
+        } 
+        
+        return "redirect:/contatos";
+    }    
+
+
     @GetMapping("/create")
     public String create(Model model)
     {
