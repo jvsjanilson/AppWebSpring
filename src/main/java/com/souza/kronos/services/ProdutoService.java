@@ -7,7 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
 import com.souza.kronos.models.Produto;
 import com.souza.kronos.repositories.ProdutoRepository;
 
@@ -23,6 +22,11 @@ public class ProdutoService {
         return repository.findAll(pageRequest);
     }
 
+    public Page<Produto> search(String search)
+    {
+        PageRequest pageRequest = PageRequest.of(0, 10, Sort.by("id").descending());
+        return repository.findByDescricaoContaining(search, pageRequest);
+    }
 
     public List<Produto> lookup()
     {

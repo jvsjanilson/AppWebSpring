@@ -44,7 +44,24 @@ public class ProdutoController {
         Page<Produto> list = service.listAll(page, size);
         model.addAttribute("list", list);
         return "/produto/index";
-
+    }
+    
+    @PostMapping("/search")
+    public String search(
+        @RequestParam(defaultValue = "", required = false) String q,
+        Model model )
+    {
+        if (q != "") {
+            Page<Produto> list;
+            list = service.search(q);
+            model.addAttribute("q", q);
+            model.addAttribute("list", list);
+            model.addAttribute("currentPage", list.getNumber());
+            model.addAttribute("totalPages", list.getTotalPages());
+            return "/produto/index";
+        } 
+        
+        return "redirect:/produtos";
     }
 
     @GetMapping("/create")

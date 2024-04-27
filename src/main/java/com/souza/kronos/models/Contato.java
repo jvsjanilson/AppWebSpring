@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -56,9 +57,12 @@ public class Contato {
     private String complemento;
     
     @Size(max = 14)
+    @Column(nullable =true)
     private String celular;
 
     @Size(max = 120)
+    @Email()
+    @Column(nullable = true)
     private String email;
 
 
