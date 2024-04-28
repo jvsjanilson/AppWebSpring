@@ -1,7 +1,7 @@
 spring:
-    web:
-        resources:
-            static-locations: file:uploads/
+    # web:
+    #     resources:
+    #         static-locations: file:uploads/
         
     servlet:
         multipart:

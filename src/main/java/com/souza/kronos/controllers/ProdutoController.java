@@ -32,7 +32,7 @@ import jakarta.validation.Valid;
 @RequestMapping("/produtos")
 public class ProdutoController {
 
-    private static String UPLOAD_DIR = "uploads/";
+    private static String UPLOAD_DIR = "src/main/resources/static/uploads/";
 
     
     @Autowired
@@ -86,9 +86,29 @@ public class ProdutoController {
     }
 
     @PostMapping("/create")
-    public String store(@Valid @ModelAttribute("obj") Produto obj, BindingResult bindingResult)
+    public String store(@Valid @ModelAttribute("obj") Produto obj, 
+        @RequestParam("image") MultipartFile file,
+        BindingResult bindingResult)
     {
-        System.out.println(obj.getPreco());
+        
+        final Path directory = Paths.get(UPLOAD_DIR);
+
+
+        if (file != null && !file.isEmpty()) {
+            try {
+
+                if (!Files.exists(directory)) {
+                    Files.createDirectories(directory);
+                }
+               
+                Path path = Paths.get(UPLOAD_DIR + file.getOriginalFilename());
+                Files.write(path, file.getBytes());
+                obj.setImagem("uploads/" + file.getOriginalFilename());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         
         if (bindingResult.hasErrors()) {
             return "/produto/create";
@@ -144,7 +164,7 @@ public class ProdutoController {
                
                 Path path = Paths.get(UPLOAD_DIR + file.getOriginalFilename());
                 Files.write(path, file.getBytes());
-                obj.setImagem(file.getOriginalFilename());
+                obj.setImagem("uploads/" + file.getOriginalFilename());
             } catch (IOException e) {
                 e.printStackTrace();
             }

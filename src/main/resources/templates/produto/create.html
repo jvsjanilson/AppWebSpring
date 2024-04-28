@@ -19,67 +19,88 @@
                 </div>
 
                 <div class="card-body">
+
                     <div class="row g-2 mb-3">
-                        
+
+                    
                         <div class="col-12 col-md-2">
-                            <label for="gtin">GTIN</label>
-                            <input 
-                            maxlength="14"
-                            th:field="*{gtin}"
-                            class="form-control " type="text">
-                            <span class="text-danger" th:if="${#fields.hasErrors('gtin')}" th:errors="*{gtin}" ></span>
+                            <div class="row g-2 mb-3">
+                                <div class="col-12  border p-1">
+                                    <img th:if="${obj.imagem != null}" th:src="@{'/' + ${obj.imagem}}" style="max-width: 100%;height: auto;"/>
+                                    <label th:if="${obj.imagem == null}" for="imagem">Imagem:</label>
+                                    <input type="file" class="form-control pt-1" id="image" name="image" accept="image/*">
+                                </div>
+                            </div>
+
                         </div>
 
                         <div class="col-12 col-md-10">
-                            <label for="descricao">Descrição</label>
-                            <input 
-                            maxlength="60"
-                            th:field="*{descricao}"
-                            class="form-control " type="text">
-                            <span class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" ></span>
-                        </div>
-                    </div>
+                            <div class="row g-2 mb-3">
+                        
+        
+                                <div class="col-12 col-md-2">
+                                    <label for="gtin">GTIN</label>
+                                    <input 
+                                    maxlength="14"
+                                    th:field="*{gtin}"
+                                    class="form-control " type="text">
+                                    <span class="text-danger" th:if="${#fields.hasErrors('gtin')}" th:errors="*{gtin}" ></span>
+                                </div>
+        
+                                <div class="col-12 col-md-10">
+                                    <label for="descricao">Descrição</label>
+                                    <input 
+                                    maxlength="60"
+                                    th:field="*{descricao}"
+                                    class="form-control " type="text">
+                                    <span class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" ></span>
+                                </div>
+                            
+                            </div>
 
-                    <div class="row g-2 mb-3">
-                        <div class="col-12 col-md-3">
-                            <label for="unidade">Unidade</label>
+                            <div class="row g-2 mb-3">
 
-                            <select 
-
-                                class="form-select"
-                                th:field="*{unidade}" >
-                                <option th:each="p : ${listUnidades}" th:value="${p.id}" th:text="${p.codigo}"></option>
-
-                            </select>
-                            <span class="text-danger" th:if="${#fields.hasErrors('unidade')}" th:errors="*{unidade}" ></span>
-                        </div>
-
-                        <div class="col-12 col-md-3">
-                            <label for="categoria">Categoria</label>
-                            <select 
-                                class="form-select"
-                                th:field="*{categoria}" >
-                                <option th:each="p : ${listCategorias}" th:value="${p.id}" th:text="${p.descricao}" ></option>
-                            </select>
-                            <span class="text-danger" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}" ></span>
-                        </div>
-
-
-                        <div class="col-12 col-md-3">
-                            <label for="preco">Preço</label>
-                            <input 
-                            th:field="*{preco}"
-                            class="form-control preco" type="text">
-                            <span class="text-danger" th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}" ></span>
-                        </div>
-
-                        <div class="col-12 col-md-3">
-                            <label for="estoque">Estoque</label>
-                            <input 
-                            th:type="text"
-                            th:field="*{estoque}"
-                            class="form-control inteiro" >
-                            <span class="text-danger" th:if="${#fields.hasErrors('estoque')}" th:errors="*{estoque}" ></span>
+                                <div class="col-12 col-md-3">
+                                    <label for="unidade">Unidade</label>
+        
+                                    <select 
+        
+                                        class="form-select"
+                                        th:field="*{unidade}" >
+                                        <option th:each="p : ${listUnidades}" th:value="${p.id}" th:text="${p.codigo}"></option>
+        
+                                    </select>
+                                    <span class="text-danger" th:if="${#fields.hasErrors('unidade')}" th:errors="*{unidade}" ></span>
+                                </div>
+        
+                                <div class="col-12 col-md-3">
+                                    <label for="categoria">Categoria</label>
+                                    <select 
+                                        class="form-select"
+                                        th:field="*{categoria}" >
+                                        <option th:each="p : ${listCategorias}" th:value="${p.id}" th:text="${p.descricao}" ></option>
+                                    </select>
+                                    <span class="text-danger" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}" ></span>
+                                </div>
+        
+        
+                                <div class="col-12 col-md-3">
+                                    <label for="preco">Preço</label>
+                                    <input 
+                                    th:field="*{preco}"
+                                    class="form-control preco" type="text">
+                                    <span class="text-danger" th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}" ></span>
+                                </div>
+        
+                                <div class="col-12 col-md-3">
+                                    <label for="estoque">Estoque</label>
+                                    <input 
+                                    th:type="text"
+                                    th:field="*{estoque}"
+                                    class="form-control inteiro" >
+                                    <span class="text-danger" th:if="${#fields.hasErrors('estoque')}" th:errors="*{estoque}" ></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
