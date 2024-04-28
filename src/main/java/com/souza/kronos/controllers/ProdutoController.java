@@ -153,8 +153,7 @@ public class ProdutoController {
     )
     {
         final Path directory = Paths.get(UPLOAD_DIR);
-
-
+       
         if (file != null && !file.isEmpty()) {
             try {
 
@@ -168,6 +167,9 @@ public class ProdutoController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else {
+            Produto produto = service.findById(obj.getId());
+            obj.setImagem(produto.getImagem());
         }
         
 
