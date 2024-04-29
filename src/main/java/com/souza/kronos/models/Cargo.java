@@ -30,4 +30,9 @@ public class Cargo {
     @NotBlank
     private String descricao;
 
+    public String toString()
+    {
+        return this.descricao;
+    }
+
 }

@@ -22,6 +22,11 @@ public class CargoService {
         return repository.findAll(pageRequest);
     }
 
+    public List<Cargo> listAll()
+    {
+        return repository.findAll();
+    }
+
     public Page<Cargo> search(String search)
     {
         PageRequest pageRequest = PageRequest.of(0, 10, Sort.by("id").descending());

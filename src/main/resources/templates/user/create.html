@@ -12,7 +12,8 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-4">
+
+                    <div class="col-12 col-md-3">
                         <div class="mb-3">
                             <label for="name">Nome do Usuario</label>
                             <input th:field="*{name}" class="form-control" type="text"  autofocus>
@@ -20,7 +21,7 @@
                         </div>
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-12 col-md-3">
                         <div class="mb-3">
                             <label for="email">e-mail</label>
                             <input th:field="*{email}" class="form-control" type="text">
@@ -28,14 +29,23 @@
                         </div>
                     </div>
 
-                 
-
-                    <div class="col-4">
-
+                    <div class="col-12 col-md-3">
                         <div class="mb-3">
                             <label for="password">Senha</label>
                             <input th:field="*{password}" class="form-control" type="password">
                             <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-3">
+                        <div class="mb-3">
+                            <label for="cargo">Cargos</label>
+                            <select 
+                                class="form-select"
+                                th:field="*{cargo}" >
+                                <option th:each="p : ${listCargos}" th:value="${p.id}" th:text="${p.descricao}" ></option>
+                            </select>
+                            <span class="text-danger" th:if="${#fields.hasErrors('cargo')}" th:errors="*{cargo}" ></span>
                         </div>
                     </div>
 

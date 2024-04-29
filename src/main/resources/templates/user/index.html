@@ -12,13 +12,16 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Cargo</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="user, iterStat : ${listUsers}" >
+                <tr th:each="user : ${listUsers}" >
                     <td th:text="${user.id}"></td>
                     <td th:text="${user.name}"></td>
                     <td th:text="${user.email}"></td>
+                    <td th:text="${user.cargo}"></td>
+
                 </tr>
             </tbody>
         </table>
