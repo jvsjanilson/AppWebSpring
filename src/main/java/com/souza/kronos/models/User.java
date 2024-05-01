@@ -35,7 +35,7 @@ public class User {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    @Size(min = 3, max = 50)
+    @Size(max = 50)
     @NotBlank
     private String name;
 
@@ -46,7 +46,6 @@ public class User {
 
     @Column(nullable = false)
     @NotBlank
-    
     private String password;
 
     @Column(nullable = true)
