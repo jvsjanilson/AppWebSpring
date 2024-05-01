@@ -40,3 +40,14 @@
 .col-w-40 {
     width: 40%;
 }
+
+
+.card-primary.card-outline {
+    border-top: 3px solid #007bff;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
