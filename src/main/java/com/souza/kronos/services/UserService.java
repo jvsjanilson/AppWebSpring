@@ -1,9 +1,8 @@
 package com.souza.kronos.services;
 
 import java.util.List;
-
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.souza.kronos.models.User;
 import com.souza.kronos.repositories.UserRepository;
@@ -27,7 +26,7 @@ public class UserService {
         repository.save(user);
     }
 
-    public User buscarPorEmail(String email)
+    public Optional<User> buscarPorEmail(String email)
     {
         return repository.findByEmail(email);
     }

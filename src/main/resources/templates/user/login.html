@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:replace="~{fragments :: head('Login')}" >
+        <style>
+            body, html {
+                height: 100%;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .login-container {
+                max-width: 400px;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                background-color: #f9f9f9;
+            }
+        </style>
+    </head>
+
+<body  class="d-flex justify-content-center align-items-center vh-100">
+
+<div class="login-container">
+
+    <div class="card">
+        <div class="card-header">
+            <h6 class="text-center">Login</h6>
+        </div>
+        <div class="card-body">
+            <form method="post" th:action="@{/login}">
+                
+                <div class="mb-3">
+                    <label for="inputEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <div class="d-grid gap-1">
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<div th:replace="~{fragments :: scripts}"></div>
+
+</body>
+</html>
