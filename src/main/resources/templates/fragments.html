@@ -22,7 +22,12 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Principal</a>
+            <a class="nav-link active" aria-current="page" href="/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+                <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4z"/>
+              </svg>
+
+            </a>
           </li>
   
           <li class="nav-item dropdown">
@@ -31,14 +36,14 @@
             </a>
             <ul class="dropdown-menu">
   
-                <li><a class="dropdown-item" th:href="@{/pais}">País</a></li>
-                <li><a class="dropdown-item" th:href="@{/estados}">Estados</a></li>
-                <li><a class="dropdown-item" th:href="@{/municipios}">Municipios</a></li>
-                <li><a class="dropdown-item" th:href="@{/contatos}">Contatos</a></li>
-                <li><a class="dropdown-item" th:href="@{/unidades}">Unidades</a></li>
-                <li><a class="dropdown-item" th:href="@{/categorias}">Categorias</a></li>
-                <li><a class="dropdown-item" th:href="@{/produtos}">Produtos</a></li>
-                <li><a class="dropdown-item" th:href="@{/users}">Usuários</a></li>
+                <li><a class="dropdown-item" th:href="@{/pais}"><i class="fa-solid fa-flag text-primary"></i> País</a></li>
+                <li><a class="dropdown-item" th:href="@{/estados}"><i class="fa-solid fa-flag text-primary"></i> Estados</a></li>
+                <li><a class="dropdown-item" th:href="@{/municipios}"><i class="fa-solid fa-flag text-primary"></i> Municipios</a></li>
+                <li><a class="dropdown-item" th:href="@{/contatos}"><i class="fa-solid fa-users-rectangle text-primary"></i> Contatos</a></li>
+                <li><a class="dropdown-item" th:href="@{/unidades}"><i class="fa-solid fa-weight-scale text-primary"></i> Unidades</a></li>
+                <li><a class="dropdown-item" th:href="@{/categorias}"><i class="fa-solid fa-icons text-primary" ></i> Categorias</a></li>
+                <li><a class="dropdown-item" th:href="@{/produtos}"><i class="fa-solid fa-qrcode text-primary"></i> Produtos</a></li>
+                <li><a class="dropdown-item" th:href="@{/users}"><i class="fa-solid fa-users text-primary"></i> Usuários</a></li>
                 
             </ul>
            </li>
@@ -48,11 +53,12 @@
           
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" 
-                href="#" role="button" 
-                data-bs-toggle="dropdown" aria-expanded="true"
-                sec:authentication="name"
-                >
-                <i class="fa fa-user"></i>
+              href="#" role="button" 
+              data-bs-toggle="dropdown" aria-expanded="true"
+              sec:authentication="name"
+
+              >
+               
               </a>
               <ul class="dropdown-menu dropdown-menu-right">
                 <li><button type="submit" class="dropdown-item float-right" ><i class="fa fa-fw fa-power-off text-danger"></i> Sair</button></li>

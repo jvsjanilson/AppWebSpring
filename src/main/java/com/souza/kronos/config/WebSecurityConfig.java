@@ -19,6 +19,7 @@ public class WebSecurityConfig {
             auth.requestMatchers("/js/**").permitAll();
             auth.requestMatchers("/css/**").permitAll();
             auth.requestMatchers("/uploads/**").permitAll();
+            auth.requestMatchers("/register").permitAll();
             auth.anyRequest().authenticated();
 
         });
@@ -32,6 +33,8 @@ public class WebSecurityConfig {
         http.logout(logout -> {
             logout.logoutSuccessUrl("/login");
         });
+
+
             
 		return http.build();
 	}

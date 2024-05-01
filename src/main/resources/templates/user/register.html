@@ -29,52 +29,47 @@
     </div>
     <div class="card card-outline card-primary">
         <div class="card-header">
-            <h6 class="text-center my-1">Login</h6>
+            <h6 class="text-center my-1">Registro</h6>
         </div>
 
         <div class="card-body">
-            <!-- <form method="post" th:action="@{/login}">
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="username" name="username" placeholder="name@example.com">
-                    <label for="username">E-mail</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                    <label for="password">Senha</label>
-                </div>
-                <div class="d-grid gap-1">
-                    <button type="submit" class="btn btn-primary">Entrar</button>
-                </div>
-            </form> -->
 
-            <form method="post" th:action="@{/login}">
+            <form method="post" th:action="@{/register}">
                 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="username" id="username" placeholder="E-mail">
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Nome" required/>
+                    <span class="input-group-text"><i class="fa-solid fa-address-card"></i></span>
+                
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="email" id="email" placeholder="E-mail" required/>
                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                 </div>
                 
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Senha">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Senha" required>
                     <span class="input-group-text" ><i class="fas fa-lock "></i></span>
                 </div>
 
-                <div class="d-grid gap-1">
-                    <button type="submit" class="btn btn-primary">Entrar</button>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Registrar</button>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="d-grid">
+                            <a class="btn btn-secondary" th:href="@{/login}">Login</a>
+                        </div>
+                    </div>
+                    
                 </div>
             </form>
         </div>
 
-        <div class="card-footer text-center bg-white">
-            <div class="d-flex">
-                <p class="my-0 me-auto">
-                    <a href="#">Esqueci a senha</a>
-                </p>
-                <p class="my-0 ">
-                    <a href="#">Registrar</a>
-                </p>
-            </div>
-        </div>
+        
     </div>
 </div>
 <div th:replace="~{fragments :: scripts}"></div>
