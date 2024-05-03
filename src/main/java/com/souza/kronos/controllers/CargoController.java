@@ -24,21 +24,15 @@ public class CargoController {
     CargoService service;
 
     @GetMapping
-    public String index(
-        @RequestParam(defaultValue = "0") int page,
-        @RequestParam(defaultValue = "10") int size,
-        Model model)
+    public String index(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size, Model model)
     {
         Page<Cargo> list = service.listAll(page, size);
         model.addAttribute("list", list);
         return "/cargo/index";
-
     }
     
     @PostMapping("/search")
-    public String search(
-        @RequestParam(defaultValue = "", required = false) String q,
-        Model model )
+    public String search(@RequestParam(defaultValue = "", required = false) String q, Model model )
     {
         if (q != "") {
             Page<Cargo> list;
@@ -72,21 +66,6 @@ public class CargoController {
         }
     }
 
-    @GetMapping("/destroy/{id}")
-    public String showFormDestroy(@PathVariable Long id, Model model)
-    {
-        Cargo obj = service.findById(id) ;
-        model.addAttribute("obj", obj);
-        return "/cargo/destroy";
-    }
-
-    @PostMapping("/destroy/cargo")
-    public String destroy(@RequestParam("id") Long id)
-    {
-        service.destroy(id);
-        return "redirect:/cargos";
-    }
-
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Long id, Model model)
     {
@@ -95,7 +74,7 @@ public class CargoController {
         return "/cargo/form";
     }
 
-    @PostMapping("/edit")
+    @PostMapping("/edit/{id}")
     public String update( @Valid Cargo obj, BindingResult bindingResult)
     {
         if (bindingResult.hasErrors()) {
@@ -103,6 +82,21 @@ public class CargoController {
         }
 
         service.update(obj);
+        return "redirect:/cargos";
+    }
+
+    @GetMapping("/destroy/{id}")
+    public String showFormDestroy(@PathVariable Long id, Model model)
+    {
+        Cargo obj = service.findById(id) ;
+        model.addAttribute("obj", obj);
+        return "/cargo/destroy";
+    }
+
+    @PostMapping("/destroy/{id}")
+    public String destroy(@RequestParam("id") Long id)
+    {
+        service.destroy(id);
         return "redirect:/cargos";
     }
 }
