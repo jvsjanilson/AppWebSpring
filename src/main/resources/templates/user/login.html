@@ -33,20 +33,9 @@
         </div>
 
         <div class="card-body">
-            <!-- <form method="post" th:action="@{/login}">
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="username" name="username" placeholder="name@example.com">
-                    <label for="username">E-mail</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                    <label for="password">Senha</label>
-                </div>
-                <div class="d-grid gap-1">
-                    <button type="submit" class="btn btn-primary">Entrar</button>
-                </div>
-            </form> -->
-
+            <div th:if="${param.error != null}" class="alert alert-danger">
+                <span th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"></span>
+            </div>
             <form method="post" th:action="@{/login}">
                 
                 <div class="input-group mb-3">
