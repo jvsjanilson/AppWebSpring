@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments :: head('Categoria')}" ></head>
+<body>
+  <div align="center" class="container-fluid"><nav th:replace="~{fragments :: navbar}"></nav></div>
+  <div class="container-fluid pt-2 d-flex justify-content-center">
+    <div class="col-12">
+
+        <form th:object="${obj}" method="post" >
+            <input type="hidden"  th:field="*{id}" th:value="${obj.id}">
+            <div class="card">
+
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <button class="btn btn-primary" type="submit">Gravar</button>
+                        <a class="btn btn-secondary" th:href="@{/cargos}">Voltar</a>
+                    </div>
+                    <caption>Cadastro de cargo</caption>
+                </div>
+
+                <div class="card-body">
+                    <div class="row g-3">
+                        
+                        <div class="col-12 col-md-6">
+                            <label for="descricao">Descrição</label>
+                            <input autofocus
+                            th:field="*{descricao}"
+                            th:value="${obj.descricao}"
+                            class="form-control " type="text">
+                            <span class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" ></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+            
+        </form>
+    </div>
+</div>  
+  <div th:replace="~{fragments :: scripts}"></div>
+</body>
+</html>

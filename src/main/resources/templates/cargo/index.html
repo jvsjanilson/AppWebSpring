@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments :: head('Cargos')}" ></head>
+<body>
+  <div align="center" class="container-fluid"><nav th:replace="~{fragments :: navbar}"></nav></div>
+  <div class="container-fluid pt-2">
+
+    <form action="#" th:action="@{/cargos/search}" method="post">
+        <div class="row g-3">
+            
+            <div class="col-3 col-md-auto">
+                <a th:href="@{/cargos/create}" class="btn btn-primary rounded-pill" title="Novo"><i class="fa fa-plus"></i></a>
+            </div>
+
+            <div class="col-9 col-md-auto">
+                <div class="input-group mb-3">
+                    <input class="form-control" type="search" name="q" th:value="${q}"  />
+                    <button class="btn btn-primary" type="submit">Procurar</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <hr class="mt-0 border border-black">
+    <table class="table table-sm table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descrição</th>
+                <th class="text-center acoes">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="m : ${list}" >
+                <td style="width: 10%;" th:text="${m.id}"></td>
+                <td th:text="${m.descricao}"></td>
+                <td class="text-center" >
+                    <a class="btn btn-sm btn-secondary" th:href="@{/cargos/update/{id}(id=${m.id})}">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+
+                    <a class="btn btn-sm btn-danger" th:href="@{/cargos/destroy/{id}(id=${m.id})}" >
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <nav th:if="${list.totalPages>1}"  aria-label="...">
+
+        <ul th:if="${list.totalPages>1}" class="pagination">
+            <li class="page-item" th:classappend="${list.first} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/categorias?page=0'}"><i class="fa-solid fa-angles-left"></i></a>
+            </li>
+            
+            <li class="page-item" th:classappend="${list.first} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/categorias?page=' + ${list.number - 1}}"><i class="fa-solid fa-angle-left"></i></a>
+            </li>
+            <li class="page-item" th:classappend="${list.last} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/categorias?page=' + ${list.number + 1}}"><i class="fa-solid fa-angle-right"></i></a>
+            </li>
+            
+            <li class="page-item" th:classappend="${list.last} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{'/categorias?page=' + ${list.totalPages-1}}"><i class="fa-solid fa-angles-right"></i></a>
+            </li>
+        </ul>
+        
+    </nav>
+</div>
+  <div th:replace="~{fragments :: scripts}"></div>
+</body>
+</html>
+

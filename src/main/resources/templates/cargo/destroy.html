@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments :: head('Categoria')}" ></head>
+<body>
+  <div align="center" class="container-fluid"><nav th:replace="~{fragments :: navbar}"></nav></div>
+  <div class="container-fluid pt-2 d-flex justify-content-center" >
+    <div class="col-6">
+
+        <form th:action="@{/categorias/destroy/categoria}" class="" method="POST" >
+            <input type="hidden" name="id" th:value="${categoria.id}">
+            
+            <div class="card">
+                <div class="card-header">
+                    Remoção de Categoria
+                </div>
+                <div class="card-body">
+                    <h6> Confirma a remover <span th:text="${categoria.descricao}"></span> ?</h6>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-danger" type="submit">Remover</button>
+                    <a class="btn  btn-secondary" th:href="@{/categorias}">Voltar</a>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</div>  
+  <div th:replace="~{fragments :: scripts}"></div>
+</body>
+</html>
+
