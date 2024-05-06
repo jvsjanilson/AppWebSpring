@@ -45,7 +45,11 @@
                 
                 <div class="input-group mb-3">
                     <input type="password" class="form-control" name="password" id="password" placeholder="Senha">
-                    <span class="input-group-text" ><i class="fas fa-lock "></i></span>
+                    <span 
+                    style="cursor: pointer"
+                    onmousedown="showOrHidePassword()"
+                    onmouseup="showOrHidePassword()"
+                    class="input-group-text" ><i id="icon-password" class="bi bi-eye-fill "></i></span>
                 </div>
 
                 <div class="d-grid gap-1">
@@ -67,6 +71,22 @@
     </div>
 </div>
 <div th:replace="~{fragments :: scripts}"></div>
+<script>
+    function showOrHidePassword()
+    {
+        var [input, icon] = [...document.querySelectorAll("#password, i#icon-password")]
+        
+        icon.classList.remove("bi-eye-fill", "bi-eye-slash-fill");
+
+        if (input.type == "password") {
+            input.type = "text";
+            icon.classList.add("bi-eye-fill")
+        } else {
+            input.type = "password";
+            icon.classList.add("bi-eye-slash-fill")
+        }
+    }
+</script>
 
 </body>
 </html>
